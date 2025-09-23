@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-gray-900">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,12 +20,48 @@
     @endif
     @vite('resources/css/app.css')
 </head>
-    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
-        <nav class="h-full w-full flex border-2">
-            <x-nav-link uri="/" name="Home" class="text-center text-white flex-auto bg-indigo-400 w-25 hover:bg-indigo-400/30 transition duration-150 ease-in-out"></x-nav-link>
-            <x-nav-link uri="/about" name="About" class="text-center text-white flex-auto bg-indigo-400 w-25 hover:bg-indigo-400/30 transition duration-150 ease-in-out"></x-nav-link>
-            <x-nav-link uri="/contact" name="Contact" class="text-center text-white flex-auto bg-indigo-400 w-25 hover:bg-indigo-400/30 transition duration-150 ease-in-out"></x-nav-link>
-        </nav>
-        {{ $slot  }}
+    <body class="h-full">
+        <div class="min-h-full">
+            <nav class="bg-gray-800/50">
+                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div class="flex h-16 items-center justify-between">
+                        <div class="flex items-center">
+                            <div class="shrink-0">
+                                <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" class="size-8" />
+                            </div>
+                            <div class="hidden md:block">
+                                <div class="ml-10 flex items-baseline space-x-4">
+                                    <x-nav-link type="anchor" uri="/" name="Home" :active="request()->is('/')"></x-nav-link>
+                                    <x-nav-link type="anchor" uri="/about" name="About" :active="request()->is('about')"></x-nav-link>
+                                    <x-nav-link type="anchor" uri="/contact" name="Contact" :active="request()->is('contact')"></x-nav-link>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="ml-4 flex items-center md:ml-6">
+                                <button type="button" class="relative rounded-full p-1 text-gray-400 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
+                                    <span class="absolute -inset-1.5"></span>
+                                    <span class="sr-only">View notifications</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
+                                        <path d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <header class="relative bg-gray-800 after:pointer-events-none after:absolute after:inset-x-0 after:inset-y-0 after:border-y after:border-white/10">
+                <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                    <h1 class="text-3xl font-bold tracking-tight text-white">Dashboard</h1>
+                </div>
+            </header>
+            <main>
+                <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                    {{$slot}}
+                </div>
+            </main>
+        </div>
     </body>
 </html>

@@ -1,1 +1,9 @@
-<a  href="{{$uri}}" class="text-center text-white flex-auto bg-indigo-400 w-25 hover:bg-indigo-400/30 transition duration-150 ease-in-out">{{$name}}</a>
+@props(['active' => false])
+@props(['type' => 'anchor'])
+
+@if ($type === 'anchor')
+    <a href="{{$uri}}" class="{{$active ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}rounded-md px-3 py-2 text-sm font-medium text-white" aria-current="{{$active ? 'page' : 'false'}}">{{$name}}</a>
+@elseif ($type === 'button')
+    <button class="{{$active ? 'bg-gray-950/50 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white'}}rounded-md px-3 py-2 text-sm font-medium text-white" aria-current="{{$active ? 'page' : 'false'}}">{{$name}}</button>
+@endif
+
