@@ -32,7 +32,7 @@
                             <div class="hidden md:block">
                                 <div class="ml-10 flex items-baseline space-x-4">
                                     <x-nav-link type="anchor" uri="/" name="Home" :active="request()->is('/')"></x-nav-link>
-                                    <x-nav-link type="anchor" uri="/about" name="About" :active="request()->is('about')"></x-nav-link>
+                                    <x-nav-link type="anchor" uri="/jobs" name="Jobs" :active="request()->is('about')"></x-nav-link>
                                     <x-nav-link type="anchor" uri="/contact" name="Contact" :active="request()->is('contact')"></x-nav-link>
                                 </div>
                             </div>
