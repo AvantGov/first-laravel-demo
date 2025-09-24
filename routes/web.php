@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminat\Support\Arr;
-use App\Models\Jobs;
+use App\Models\JobListing;
 
 
 Route::get('/', function () {
@@ -11,15 +10,16 @@ Route::get('/', function () {
 
 Route::get('/jobs', function () {
     return view('jobs', [
-        'jobs' => Jobs::all()
+        'jobs' => JobListing::all()
     ]);
 });
 
 Route::get('/jobs/{id}', function ($id) {
     return view('job', [
-        'job' => Jobs::find($id)
+        'job' => JobListing::find($id)
     ]);
 });
+
 
 Route::get('/contact', function() {
     return view('contact');
